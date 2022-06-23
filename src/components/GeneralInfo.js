@@ -1,9 +1,9 @@
 import React, {Component} from "react"
+import PropTypes from 'prop-types';
 
 class GeneralInfo extends Component {
-    constructor(){
-        super()
-
+    constructor(props){
+        super(props)
         this.state = {
             fullName: '',
             email: '',
@@ -20,10 +20,20 @@ class GeneralInfo extends Component {
         })
     }
 
+    
+
     render() {
+        const generalDisplay = (
+            <div className="general--display">
+                <p>Full name: {this.state.fullName}</p>
+                <p>Email: {this.state.email}</p>
+                <p>Phone Number: {this.state.phone}</p>
+            </div>
+        )
+
         return (
             <div>
-                <form className="general--form">
+                {this.props.edit && <form className="general--form">
                     <label htmlFor="fullName">Full Name</label>
                     <input
                         type="text"
@@ -48,15 +58,14 @@ class GeneralInfo extends Component {
                         onChange={this.handleChange}
                         value={this.state.phone}
                     />
-                </form>
-                <div className="general--display">
-
-                </div>
+                </form>}
+                {(this.props.edit === false) && generalDisplay}
             </div>
         )
     }
 }
 
+GeneralInfo.propTypes = { edit: PropTypes.bool }
 
 
 export default GeneralInfo

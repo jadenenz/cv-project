@@ -1,4 +1,5 @@
 import React, {Component} from "react"
+import PropTypes from "prop-types"
 
 class Educational extends Component {
     constructor(props){
@@ -22,9 +23,17 @@ class Educational extends Component {
     }
 
     render() {
+        const educationalDisplay = (
+            <div className="educational--display">
+                <h1>Educational Background</h1>
+                <p>School Name: {this.state.schoolName}</p>
+                <p>Title of Study: {this.state.studyTitle}</p>
+                <p>Period of Study: {this.state.dateStarted} - {this.state.completionDate}</p>
+            </div>
+        )
         return (
             <div>
-                <form className="educational--form">
+                {this.props.edit && <form className="educational--form">
                     <label htmlFor="schoolName">School Name</label>
                     <input
                         type="text"
@@ -58,12 +67,14 @@ class Educational extends Component {
                         onChange={this.handleChange}
                         value={this.state.completionDate}
                     />
-                </form>
+                </form>}
+                {this.props.edit === false && educationalDisplay}
             </div>
         )
     }
 }
 
+Educational.propTypes = { edit: PropTypes.bool }
 
 
 export default Educational

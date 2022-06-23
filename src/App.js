@@ -15,21 +15,24 @@ class App extends Component {
 
     this.toggleEdit = this.toggleEdit.bind(this)
   }
-s
     toggleEdit() {
-      this.setState({
-        edit: !this.state.edit
+      this.setState(prevState => {
+        return {
+          edit: !prevState.edit
+        }
       })
     }
   
 
 
   render(){
+    // console.log(`Testing this is the edit: ${this.state.edit}`)
     return (
       <div>
-        <GeneralInfo />
-        <Educational />
-        <Practical />
+        <GeneralInfo edit={this.state.edit} />
+        <Educational edit={this.state.edit} />
+        <Practical edit={this.state.edit} />
+        <button type="submit" onClick={this.toggleEdit}>Submit</button>
       </div>
     )
   }
