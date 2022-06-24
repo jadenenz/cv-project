@@ -26,7 +26,7 @@ class Practical extends Component {
     render() {
         const practicalDisplay = (
             <div className="practicalDisplay">
-                <h1>Practical Experience</h1>
+                <h2>Practical Experience</h2>
                 <p>Company Name: {this.state.companyName}</p>
                 <p>Position Title: {this.state.positionTitle}</p>
                 <p>Main tasks of job: {this.state.mainTasks}</p>
@@ -36,6 +36,7 @@ class Practical extends Component {
         return (
             <div>
                 {this.props.edit && <form className="practical--form">
+                    <h2>Practical Experience</h2>
                     <label htmlFor="companyName">Company Name</label>
                     <input 
                         type="text"

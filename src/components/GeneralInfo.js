@@ -25,6 +25,7 @@ class GeneralInfo extends Component {
     render() {
         const generalDisplay = (
             <div className="general--display">
+                <h2>General Information</h2>
                 <p>Full name: {this.state.fullName}</p>
                 <p>Email: {this.state.email}</p>
                 <p>Phone Number: {this.state.phone}</p>
@@ -34,6 +35,7 @@ class GeneralInfo extends Component {
         return (
             <div>
                 {this.props.edit && <form className="general--form">
+                    <h2>General Information</h2>
                     <label htmlFor="fullName">Full Name</label>
                     <input
                         type="text"

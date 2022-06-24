@@ -25,7 +25,7 @@ class Educational extends Component {
     render() {
         const educationalDisplay = (
             <div className="educational--display">
-                <h1>Educational Background</h1>
+                <h2>Educational Background</h2>
                 <p>School Name: {this.state.schoolName}</p>
                 <p>Title of Study: {this.state.studyTitle}</p>
                 <p>Period of Study: {this.state.dateStarted} - {this.state.completionDate}</p>
@@ -34,6 +34,7 @@ class Educational extends Component {
         return (
             <div>
                 {this.props.edit && <form className="educational--form">
+                    <h2>Educational Background</h2>
                     <label htmlFor="schoolName">School Name</label>
                     <input
                         type="text"

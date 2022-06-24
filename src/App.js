@@ -28,11 +28,12 @@ class App extends Component {
   render(){
     // console.log(`Testing this is the edit: ${this.state.edit}`)
     return (
-      <div>
+      <div className="app-main">
+        <h1>CV Generator</h1>
         <GeneralInfo edit={this.state.edit} />
         <Educational edit={this.state.edit} />
         <Practical edit={this.state.edit} />
-        <button type="submit" onClick={this.toggleEdit}>Submit</button>
+        <button type="submit" onClick={this.toggleEdit}>{this.state.edit === true ? "Submit" : "Edit"}</button>
       </div>
     )
   }
