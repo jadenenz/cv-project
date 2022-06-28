@@ -1,21 +1,19 @@
-import React, {Component} from "react"
-import PropTypes from "prop-types"
+import React from "react"
 
-class Practical extends Component {
-    constructor(props){
-        super(props)
+function Practical(props){
 
-        this.state = {
+    const [data, setData] = React.useState(
+        {
             companyName: '',
             positionTitle: '',
             mainTasks: '',
             dateStarted: '',
             dateEnded: '',
         }
-    }
+    )
 
-    handleChange = (event) => {
-        this.setState(prevFormData => {
+    const handleChange = (event) => {
+        setData(prevFormData => {
             return {
                 ...prevFormData,
                 [event.target.name]: event.target.value
@@ -23,66 +21,62 @@ class Practical extends Component {
         })
     }
 
-    render() {
-        const practicalDisplay = (
-            <div className="practicalDisplay">
+    const practicalDisplay = (
+                    <div className="practicalDisplay">
+                        <h2>Practical Experience</h2>
+                        <p>Company Name: {data.companyName}</p>
+                        <p>Position Title: {data.positionTitle}</p>
+                        <p>Main tasks of job: {data.mainTasks}</p>
+                        <p>Period of employment: {data.dateStarted} - {data.dateEnded}</p>
+                    </div>
+                )
+    return (
+        <div>
+            {props.edit && <form className="practical--form">
                 <h2>Practical Experience</h2>
-                <p>Company Name: {this.state.companyName}</p>
-                <p>Position Title: {this.state.positionTitle}</p>
-                <p>Main tasks of job: {this.state.mainTasks}</p>
-                <p>Period of employment: {this.state.dateStarted} - {this.state.dateEnded}</p>
-            </div>
-        )
-        return (
-            <div>
-                {this.props.edit && <form className="practical--form">
-                    <h2>Practical Experience</h2>
-                    <label htmlFor="companyName">Company Name</label>
-                    <input 
-                        type="text"
-                        id="companyName"
-                        name="companyName"
-                        onChange={this.handleChange}
-                        value={this.state.companyName}
+                <label htmlFor="companyName">Company Name</label>
+                <input 
+                    type="text"
+                    id="companyName"
+                    name="companyName"
+                    onChange={handleChange}
+                    value={data.companyName}
+                />
+                <label htmlFor="positionTitle">Position Title</label>
+                <input
+                    type="text"
+                    id="positionTitle"
+                    name="positionTitle"
+                    onChange={handleChange}
+                    value={data.positionTitle}
                     />
-                    <label htmlFor="positionTitle">Position Title</label>
-                    <input
-                        type="text"
-                        id="positionTitle"
-                        name="positionTitle"
-                        onChange={this.handleChange}
-                        value={this.state.positionTitle}
-                        />
-                    <label htmlFor="mainTasks">Main tasks of job</label>
-                    <textarea
-                        id="mainTasks"
-                        name="mainTasks"
-                        onChange={this.handleChange}
-                        value={this.state.mainTasks}
-                    />
-                    <label htmlFor="dateStarted">Date started</label>
-                    <input
-                        type="text"
-                        id="dateStarted"
-                        name="dateStarted"
-                        onChange={this.handleChange}
-                        value={this.state.dateStarted}
-                    />
-                    <label htmlFor="dateEnded">Date ended</label>
-                    <input
-                        type="text"
-                        id="dateEnded"
-                        name="dateEnded"
-                        onChange={this.handleChange}
-                        value={this.state.dateEnded}
-                    />
-                </form>}
-                {this.props.edit === false && practicalDisplay}
-            </div>
-        )
-    }
+                <label htmlFor="mainTasks">Main tasks of job</label>
+                <textarea
+                    id="mainTasks"
+                    name="mainTasks"
+                    onChange={handleChange}
+                    value={data.mainTasks}
+                />
+                <label htmlFor="dateStarted">Date started</label>
+                <input
+                    type="text"
+                    id="dateStarted"
+                    name="dateStarted"
+                    onChange={handleChange}
+                    value={data.dateStarted}
+                />
+                <label htmlFor="dateEnded">Date ended</label>
+                <input
+                    type="text"
+                    id="dateEnded"
+                    name="dateEnded"
+                    onChange={handleChange}
+                    value={data.dateEnded}
+                />
+            </form>}
+            {props.edit === false && practicalDisplay}
+        </div>
+    )
 }
-
-Practical.propTypes = { edit: PropTypes.bool }
 
 export default Practical
